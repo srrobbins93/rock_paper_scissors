@@ -1,77 +1,110 @@
+const playerScore = document.getElementById("playerScore");
+const computerScore = document.getElementById("computerScore");
+const rock = document.getElementById("Rock");
+const paper = document.getElementById("Paper");
+const scissors = document.getElementById("Scissors");
+const output = document.getElementById("output");
+const outputText1 = document.querySelector("#output").firstElementChild;
+const outputText2 = document.querySelector("#output").lastElementChild;
+const restart = document.getElementById("restart");
+
 function computerPlay () {
     selection = ["Rock", "Paper", "Scissors"];
     return selection[(getRandomInt(1,4)-1)];
 }
 
-function playerSelection () {
-    const input = applyUpper(prompt("Choose either Rock, Paper, Scissors"));
-    return input;
-}
-
-function game() {
+function game(){
     playerWins = 0;
     computerWins = 0;
-    while (playerWins < 5 && computerWins < 5) {
-        playRound(playerSelection(),computerPlay());
-        console.log(`Player Wins: ${playerWins} Computer Wins: ${computerWins}.`);
-    }
-    if (playerWins === 5) {
-        console.log("GAME OVER");
-        console.log(`You Win! Player Wins: ${playerWins} Computer Wins: ${computerWins}.`);
-        if (applyUpper(prompt("Would you like to play again?")) === "Yes") {
-            game();
-        }
-        console.log("Goodbye!");
-    }
-    else if (computerWins === 5) {
-        console.log("GAME OVER");
-        console.log(`You Lose! Player Wins: ${playerWins} Computer Wins: ${computerWins}.`);
-        if (applyUpper(prompt("Would you like to play again?")) === "Yes") {
-            game();
-        }
-        console.log("Goodbye!");
-    }
+    rock.addEventListener('click', () => playRound("Rock", computerPlay()));
+    paper.addEventListener('click', () => playRound("Paper", computerPlay()));
+    scissors.addEventListener('click', () => playRound("Scissors", computerPlay()));
+    restart.addEventListener('click', () => {
+        rock.style.pointerEvents ='auto';
+        paper.style.pointerEvents ='auto';
+        scissors.style.pointerEvents ='auto';
+        playerWins = 0;
+        computerWins = 0;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        restart.style.display ='none';
+        outputText1.textContent ='';
+        outputText2.textContent ='';
+    });
 }
+
+//to do
+
+// 1. Improve Styling.
+// 2. Edit text or add an an image so that it shows what the computer has chosen.
+// 3. Add hover effects.
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "Rock" && computerSelection == "Rock") {
-        console.log("It's a tie!");
+        outputText1.textContent = "The Computer Chose Rock";
+        outputText2.textContent = "It's a tie!";
     }
     else if (playerSelection == "Paper" && computerSelection == "Paper") {
-        console.log("It's a tie!");
+        outputText1.textContent = "The Computer Chose Paper";
+        outputText2.textContent = "It's a tie!";
     }
     else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-        console.log("It's a tie!");
+        outputText1.textContent = "The Computer Chose Scissors";
+        outputText2.textContent = "It's a tie!";
     }
     // ----- Scissor Comparisons
     else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        console.log("Scissors beats Paper. You win!");
-        return playerWins = playerWins + 1;
+        outputText1.textContent = "The Computer Chose Paper";
+        outputText2.textContent = "Scissors beats Paper. You win!";
+        playerWins = playerWins + 1;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        gameCheck();
     }
     else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        console.log("Rock beats Scissors. You Lose!");
-        return computerWins = computerWins + 1;
+        outputText1.textContent = "The Computer Chose Rock";
+        outputText2.textContent = "Rock beats Scissors. You Lose!";
+        computerWins = computerWins + 1;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        gameCheck();
     }
     // ----- Paper Comparisons
     else if (playerSelection == "Paper" && computerSelection == "Rock") {
-        console.log("Paper beats Rock. You win!");
-        return playerWins = playerWins + 1;
+        outputText1.textContent = "The Computer Chose Rock";
+        outputText2.textContent = "Paper beats Rock. You win!";
+        playerWins = playerWins + 1;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        gameCheck();
     }
     else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        console.log("Scissors beats Paper. You Lose!");
-        return computerWins = computerWins + 1;
+        outputText1.textContent = "The Computer Chose Scissors";
+        outputText2.textContent = "Scissors beats Paper. You Lose!";
+        computerWins = computerWins + 1;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        gameCheck();
     }
     // ----- Rock Comparisons
     else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        console.log("Rock beats Scissors. You win!");
-        return playerWins = playerWins + 1;
+        outputText1.textContent = "The Computer Chose Scissors";
+        outputText2.textContent = "Rock beats Scissors. You win!";
+        playerWins = playerWins + 1;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        gameCheck();
     }
     else if (playerSelection == "Rock" && computerSelection == "Paper") {
-        console.log("Paper beats Rock. You Lose!");
-        return computerWins = computerWins + 1;
+        outputText1.textContent = "The Computer Chose Paper";
+        outputText2.textContent  = "Paper beats Rock. You Lose!";
+        computerWins = computerWins + 1;
+        playerScore.textContent = playerWins;
+        computerScore.textContent = computerWins;
+        gameCheck();
     }
     else {
-        console.log("You provided an invalid selection. Please select either: Rock, Paper, or Scissors");
+
     }
 }
 // Gets a random integer. This will allow computerPlay() to select a random array item.
@@ -81,10 +114,25 @@ function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-// Makes sure that passed string parameters have only capitalized first letters and nothing else.
-function applyUpper(string) {
-    firstLetter = string.charAt(0).toUpperCase();
-    return firstLetter + string.slice(1);
+// Checks to see if any win condition has been met. If so, end game by disabling all inputs except for the ability to play again.
+function gameCheck() {
+    if (playerWins === 5) {
+        outputText1.textContent = "You Win!";
+        outputText2.textContent =`Player Wins: ${playerWins} Computer Wins: ${computerWins}.`;
+        restart.style.display ='block';
+        rock.style.pointerEvents ='none';
+        paper.style.pointerEvents ='none';
+        scissors.style.pointerEvents ='none';
+     }
+     else if (computerWins === 5) {
+        outputText1.textContent = "You Lose!";
+        outputText2.textContent =`Player Wins: ${playerWins} Computer Wins: ${computerWins}.`;
+        restart.style.display ='block';
+        rock.style.pointerEvents ='none';
+        paper.style.pointerEvents ='none';
+        scissors.style.pointerEvents ='none';
+    }
 }
+
 
 game();

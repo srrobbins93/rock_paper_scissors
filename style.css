@@ -1,0 +1,85 @@
+body {
+    background-color: #00ccff;
+}
+
+#container {
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+h1 {
+    color:#ffdb00;
+    margin: 15px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
+}
+
+#banner {
+    display: flex;
+}
+
+
+#scoreBoard {
+    display: flex;
+}
+
+
+#Rock, #Paper, #Scissors {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+}
+
+#Rock:hover, #Paper:hover, #Scissors:hover {
+    transition: all 300ms ease;
+    height: 250px;
+}
+
+#Rock {
+    background-image:url(./images/rock.png);
+    background-color: #00ccff;
+    pointer-events: auto;
+    border: none;
+}
+
+#Paper {
+    background-image: url(./images/Paper.png);
+    pointer-events: auto;
+    background-color: #00ccff;
+    border: none;
+}
+
+#Scissors {
+    background-image: url(./images/scissors.png);
+    background-color: #00ccff;
+    pointer-events: auto;
+    border: none;
+}
+
+#output {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:#fde74c;
+    font-size: 25px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#restart {
+    width: 200px;
+    height: 100px;
+    font-size: 25px;
+    color:white;
+    background-color: #404e4d;
+    display: none;
+}
+
+#restart:hover {
+    background-color: #fde74c;
+    transition: all 400ms ease;
+    color: black;
+    font-size: 25px;
+    display: none;
+}
