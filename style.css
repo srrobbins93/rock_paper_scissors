@@ -44,7 +44,7 @@ h1 {
 }
 
 #Paper {
-    background-image: url(./images/Paper.png);
+    background-image: url(./images/paper.png);
     pointer-events: auto;
     background-color: #00ccff;
     border: none;
