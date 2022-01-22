@@ -44,52 +44,39 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == computerSelection) {
         outputText2.textContent = "It's a tie!";
+        return;
     }
     // ----- Scissor Comparisons
     else if (playerSelection == "Scissors" && computerSelection == "Paper") {
         outputText2.textContent = "Scissors beats Paper. You win!";
         playerWins = playerWins + 1;
-        playerScore.textContent = playerWins;
-        computerScore.textContent = computerWins;
-        gameCheck();
+
     }
     else if (playerSelection == "Scissors" && computerSelection == "Rock") {
         outputText2.textContent = "Rock beats Scissors. You Lose!";
         computerWins = computerWins + 1;
-        playerScore.textContent = playerWins;
-        computerScore.textContent = computerWins;
-        gameCheck();
     }
     // ----- Paper Comparisons
     else if (playerSelection == "Paper" && computerSelection == "Rock") {
         outputText2.textContent = "Paper beats Rock. You win!";
         playerWins = playerWins + 1;
-        playerScore.textContent = playerWins;
-        computerScore.textContent = computerWins;
-        gameCheck();
     }
     else if (playerSelection == "Paper" && computerSelection == "Scissors") {
         outputText2.textContent = "Scissors beats Paper. You Lose!";
         computerWins = computerWins + 1;
-        playerScore.textContent = playerWins;
-        computerScore.textContent = computerWins;
-        gameCheck();
     }
     // ----- Rock Comparisons
     else if (playerSelection == "Rock" && computerSelection == "Scissors") {
         outputText2.textContent = "Rock beats Scissors. You win!";
         playerWins = playerWins + 1;
-        playerScore.textContent = playerWins;
-        computerScore.textContent = computerWins;
-        gameCheck();
     }
     else if (playerSelection == "Rock" && computerSelection == "Paper") {
         outputText2.textContent  = "Paper beats Rock. You Lose!";
         computerWins = computerWins + 1;
-        playerScore.textContent = playerWins;
-        computerScore.textContent = computerWins;
-        gameCheck();
     }
+    playerScore.textContent = playerWins;
+    computerScore.textContent = computerWins;
+    gameCheck();
 }
 // Gets a random integer. This will allow computerPlay() to select a random array item.
 function getRandomInt (min, max) {
