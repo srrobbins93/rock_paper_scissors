@@ -46,11 +46,12 @@ function playRound(playerSelection, computerSelection) {
         outputText2.textContent = "It's a tie!";
         return;
     }
-    else if (
-        (playerSelection == "Scissors" && computerSelection == "Paper")
-        || (playerSelection == "Rock" && computerSelection == "Scissors")
-        || (playerSelection == "Paper" && computerSelection == "Rock")
-    ){
+    wins = [
+        'ScissorsPaper',
+        'PaperRock',
+        'RockScissors'
+    ]
+    else if (wins.indexOf(playerSelection + computerSelection) >= 0){
         outputText2.textContent = playerSelection + " beats " + computerSelection + ". You win!";
         playerWins = playerWins + 1;
     }
