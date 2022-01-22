@@ -42,13 +42,7 @@ function game(){
 function playRound(playerSelection, computerSelection) {
     outputText1.textContent = "The Computer Chose "+ computerSelection;
 
-    if (playerSelection == "Rock" && computerSelection == "Rock") {
-        outputText2.textContent = "It's a tie!";
-    }
-    else if (playerSelection == "Paper" && computerSelection == "Paper") {
-        outputText2.textContent = "It's a tie!";
-    }
-    else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+    if (playerSelection == computerSelection) {
         outputText2.textContent = "It's a tie!";
     }
     // ----- Scissor Comparisons
