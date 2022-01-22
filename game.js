@@ -90,9 +90,6 @@ function playRound(playerSelection, computerSelection) {
         computerScore.textContent = computerWins;
         gameCheck();
     }
-    else {
-
-    }
 }
 // Gets a random integer. This will allow computerPlay() to select a random array item.
 function getRandomInt (min, max) {
