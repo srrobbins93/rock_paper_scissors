@@ -40,21 +40,19 @@ function game(){
 // 3. Add hover effects.
 
 function playRound(playerSelection, computerSelection) {
+    outputText1.textContent = "The Computer Chose "+ computerSelection;
+
     if (playerSelection == "Rock" && computerSelection == "Rock") {
-        outputText1.textContent = "The Computer Chose Rock";
         outputText2.textContent = "It's a tie!";
     }
     else if (playerSelection == "Paper" && computerSelection == "Paper") {
-        outputText1.textContent = "The Computer Chose Paper";
         outputText2.textContent = "It's a tie!";
     }
     else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-        outputText1.textContent = "The Computer Chose Scissors";
         outputText2.textContent = "It's a tie!";
     }
     // ----- Scissor Comparisons
     else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        outputText1.textContent = "The Computer Chose Paper";
         outputText2.textContent = "Scissors beats Paper. You win!";
         playerWins = playerWins + 1;
         playerScore.textContent = playerWins;
@@ -62,7 +60,6 @@ function playRound(playerSelection, computerSelection) {
         gameCheck();
     }
     else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        outputText1.textContent = "The Computer Chose Rock";
         outputText2.textContent = "Rock beats Scissors. You Lose!";
         computerWins = computerWins + 1;
         playerScore.textContent = playerWins;
@@ -71,7 +68,6 @@ function playRound(playerSelection, computerSelection) {
     }
     // ----- Paper Comparisons
     else if (playerSelection == "Paper" && computerSelection == "Rock") {
-        outputText1.textContent = "The Computer Chose Rock";
         outputText2.textContent = "Paper beats Rock. You win!";
         playerWins = playerWins + 1;
         playerScore.textContent = playerWins;
@@ -79,7 +75,6 @@ function playRound(playerSelection, computerSelection) {
         gameCheck();
     }
     else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        outputText1.textContent = "The Computer Chose Scissors";
         outputText2.textContent = "Scissors beats Paper. You Lose!";
         computerWins = computerWins + 1;
         playerScore.textContent = playerWins;
@@ -88,7 +83,6 @@ function playRound(playerSelection, computerSelection) {
     }
     // ----- Rock Comparisons
     else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        outputText1.textContent = "The Computer Chose Scissors";
         outputText2.textContent = "Rock beats Scissors. You win!";
         playerWins = playerWins + 1;
         playerScore.textContent = playerWins;
@@ -96,7 +90,6 @@ function playRound(playerSelection, computerSelection) {
         gameCheck();
     }
     else if (playerSelection == "Rock" && computerSelection == "Paper") {
-        outputText1.textContent = "The Computer Chose Paper";
         outputText2.textContent  = "Paper beats Rock. You Lose!";
         computerWins = computerWins + 1;
         playerScore.textContent = playerWins;
