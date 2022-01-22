@@ -46,34 +46,19 @@ function playRound(playerSelection, computerSelection) {
         outputText2.textContent = "It's a tie!";
         return;
     }
-    // ----- Scissor Comparisons
-    else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        outputText2.textContent = "Scissors beats Paper. You win!";
+    else if (
+        (playerSelection == "Scissors" && computerSelection == "Paper")
+        || (playerSelection == "Rock" && computerSelection == "Scissors")
+        || (playerSelection == "Paper" && computerSelection == "Rock")
+    ){
+        outputText2.textContent = playerSelection + " beats " + computerSelection + ". You win!";
         playerWins = playerWins + 1;
+    }
+    else {
+        outputText2.textContent = computerSelection + " beats " + playerSelection + ". You Lose!";
+        computerWins = computerWins + 1;
+    }
 
-    }
-    else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        outputText2.textContent = "Rock beats Scissors. You Lose!";
-        computerWins = computerWins + 1;
-    }
-    // ----- Paper Comparisons
-    else if (playerSelection == "Paper" && computerSelection == "Rock") {
-        outputText2.textContent = "Paper beats Rock. You win!";
-        playerWins = playerWins + 1;
-    }
-    else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        outputText2.textContent = "Scissors beats Paper. You Lose!";
-        computerWins = computerWins + 1;
-    }
-    // ----- Rock Comparisons
-    else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        outputText2.textContent = "Rock beats Scissors. You win!";
-        playerWins = playerWins + 1;
-    }
-    else if (playerSelection == "Rock" && computerSelection == "Paper") {
-        outputText2.textContent  = "Paper beats Rock. You Lose!";
-        computerWins = computerWins + 1;
-    }
     playerScore.textContent = playerWins;
     computerScore.textContent = computerWins;
     gameCheck();
